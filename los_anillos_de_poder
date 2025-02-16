@@ -1,0 +1,49 @@
+#Posible solucion al ejercicio 37 de https://retosdeprogramacion.com/ejercicios/
+#¡La Tierra Media está en guerra! En ella lucharán razas leales
+#* a Sauron contra otras bondadosas que no quieren que el mal reine
+# * sobre sus tierras.
+# * Cada raza tiene asociado un "valor" entre 1 y 5:
+# * - Razas bondadosas: Pelosos (1), Sureños buenos (2), Enanos (3),
+# *   Númenóreanos (4), Elfos (5)
+# * - Razas malvadas: Sureños malos (2), Orcos (2), Goblins (2),
+# *   Huargos (3), Trolls (5)
+# * Crea un programa que calcule el resultado de la batalla entre
+# * los 2 tipos de ejércitos:
+# * - El resultado puede ser que gane el bien, el mal, o exista un empate.
+# *   Dependiendo de la suma del valor del ejército y el número de integrantes.
+# * - Cada ejército puede estar compuesto por un número de integrantes variable
+# *   de cada raza.
+# * - Tienes total libertad para modelar los datos del ejercicio.
+# * Ej: 1 Peloso pierde contra 1 Orco
+# *     2 Pelosos empatan contra 1 Orco
+# *     3 Pelosos ganan a 1 Orco
+# */
+
+def batalla_tierra_media(bondadosos, malvados):
+  #declaramos las variables
+  razas = {
+    'Razas bondadosas':{'Pelosos':1, 'Sureños buenos':2, 'Enanos':3, 'Numenóreanos':4, 'Elfos':5},
+    'Razas malvadas':{'Sureños malos':2, 'Orcos':2, 'Goblins':2, 'Huargos':3, 'Trolls':5}
+  }
+
+  ejercito1 = sum(razas['Razas bondadosas'][raza] * cantidad for raza, cantidad in bondadosos.items())
+  ejercito2 = sum(razas['Razas malvadas'][raza] * cantidad for raza, cantidad in malvados.items())
+
+  #Hacemos las comparaciones para el resultado de la batalla
+  if ejercito1 > ejercito2:
+    return "El bien gana la batalla"
+  elif ejercito1 < ejercito2:
+    return "El mal gana la batalla"
+  else:
+    return "Ha habido un empate entre el bien y el mal"
+
+
+
+#Ejemplo de uso
+ejercito_bondadoso = {'Sureños buenos':10, 'Enanos':4}
+ejercito_malvado = {'Sureños malos':8, 'Huargos':2, 'Trolls':2}
+
+print(batalla_tierra_media(ejercito_bondadoso, ejercito_malvado)
+
+
+
