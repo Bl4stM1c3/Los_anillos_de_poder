@@ -1,0 +1,47 @@
+#Otra posible solucion al ejercicio 37 de https://retosdeprogramacion.com/ejercicios/
+#¡La Tierra Media está en guerra! En ella lucharán razas leales
+# * a Sauron contra otras bondadosas que no quieren que el mal reine
+# * sobre sus tierras.
+# * Cada raza tiene asociado un "valor" entre 1 y 5:
+# * - Razas bondadosas: Pelosos (1), Sureños buenos (2), Enanos (3),
+# *   Númenóreanos (4), Elfos (5)
+# * - Razas malvadas: Sureños malos (2), Orcos (2), Goblins (2),
+# *   Huargos (3), Trolls (5)
+# * Crea un programa que calcule el resultado de la batalla entre
+# * los 2 tipos de ejércitos:
+# * - El resultado puede ser que gane el bien, el mal, o exista un empate.
+# *   Dependiendo de la suma del valor del ejército y el número de integrantes.
+# * - Cada ejército puede estar compuesto por un número de integrantes variable
+# *   de cada raza.
+# * - Tienes total libertad para modelar los datos del ejercicio.
+# * Ej: 1 Peloso pierde contra 1 Orco
+# *     2 Pelosos empatan contra 1 Orco
+# *     3 Pelosos ganan a 1 Orco
+
+#En este caso el diccionario valores es más accesible que el diccionario razas del otro archivo
+#con el metodo .get() se evitan errores si se ingresa una raza incorrecta
+
+
+def batalla_tierra_media(bondadosos, malvados):
+
+  #Declaramos las variables
+  valores = {
+    'Pelosos':1, 'Sureños buenos':2, 'Enanos':3, 'Numenoreanos':4, 'Elfos':5,
+    'Sureños malos':2, 'Orcos':2, 'Goblins':2, 'Huargos':3, 'Trolls':5
+  }
+  ejercito1 = sum(valores.get(raza, 0) * cantidad for raza, cantidad in bondadosos.items())
+  ejercito2 = sum(valores.get(raza, 0) * cantidad for raza, cantidad in malvados.items())
+
+  if ejercito1 > ejercito2:
+    return "El ejercito bondadoso gana la batalla. La tierra media está salvada"
+  elif ejercito1 < ejercito2:
+    return "El ejercito malvado gana la batalla. La tierra media está perdida"
+  else:
+    return "Ha habido un empate entre los ejercitos"
+
+  #Ejemplo de uso
+ejercito_bondadoso = {'Enanos':5, 'Peolosos':10, 'Sureños buenos':8, 'Elfos':2}
+ejercito_malvado = {'Sureños malos':10, 'Orcos':4, 'Huargos':3, 'Trolls':1}
+
+print(batalla_tierra_media(ejercito_bondadoso, ejercito_malvado)
+
